@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 // Define the Player's Performance schema
 const playerPerformanceSchema = new mongoose.Schema({
+  name: String,
   appearances: Number,
   goals: Number,
   assists: Number,
@@ -40,17 +41,7 @@ const upcomingMatchSchema = new mongoose.Schema({
 
 // Define the Team schema
 const teamSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  playersInformation: [
-    {
-      name: String,
-      performance: playerPerformanceSchema,
-    },
-  ],
+  playersInformation: [playerPerformanceSchema],
   teamPerformance: [teamPerformanceSchema],
   upcomingMatches: [upcomingMatchSchema],
 });

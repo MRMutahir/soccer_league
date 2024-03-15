@@ -24,7 +24,6 @@ const getAllTeams = async (req, res, next) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
 const getSingleTeam = async (req, res, next) => {
   const teamId = req.params.teamId;
   try {
@@ -32,13 +31,11 @@ const getSingleTeam = async (req, res, next) => {
     if (!team) {
       return res.status(404).json({ error: "Team not found" });
     }
-
     res.status(200).json({ team: team });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
 const updateTeam = async (req, res, next) => {
   const id = req.params.teamId;
   const newName = req.body.name;
