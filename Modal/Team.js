@@ -41,6 +41,11 @@ const upcomingMatchSchema = new mongoose.Schema({
 
 // Define the Team schema
 const teamSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    unique: true,
+    required: true,
+  },
   playersInformation: [playerPerformanceSchema],
   teamPerformance: [teamPerformanceSchema],
   upcomingMatches: [upcomingMatchSchema],

@@ -9,31 +9,31 @@ import {
 
 const route_Players_Performance = express.Router();
 
-// GET all players performances
+// GET all
 route_Players_Performance.get(
   "/Players_Performances",
   getAllPlayersPerformances
 );
 
-// GET single player performance data
+// GET single
 route_Players_Performance.get(
   "/Players_Performance/:playersId",
   getSinglePlayerPerformance
 );
 
-// POST create a single player performance
+// POST create
 route_Players_Performance.post(
   "/Players_Performance/:playersId",
   createPlayerPerformance
 );
 
-// PUT update a single player performance data
+// PUT update
 route_Players_Performance.put(
   "/Players_Performance/:playersId",
   updatePlayerPerformance
 );
 
-// DELETE a single player performance data
+// DELETE
 route_Players_Performance.delete(
   "/Players_Performance/:playersId",
   deletePlayerPerformance

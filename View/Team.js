@@ -14,16 +14,16 @@ const route = express.Router();
 // GET all teams
 route.get("/teams", getAllTeams);
 
-// GET single team data
+// GET single
 route.get("/team/:teamId", getSingleTeam);
 
-// POST create a single team
+// POST create
 route.post("/team", createTeam);
 
-// PUT update a single team data
+// PUT update
 route.put("/team/:teamId", updateTeam);
 
-// DELETE a single team data
+// DELETE
 route.delete("/team/:teamId", deleteTeam);
 
 export default route;

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import route from "./View/Team.js";
 import route_Players_Performance from "./View/Players_Performance.js";
+import Teams_Performance from "./View/Teams_Performance.js";
 
 let app = express();
 let port = 3000;
@@ -22,6 +23,7 @@ const connect = () => {
 app.use(express.json());
 app.use("/api", route);
 app.use("/api", route_Players_Performance);
+app.use("/api", Teams_Performance);
 
 app.listen(port, () => {
   connect();

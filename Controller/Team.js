@@ -1,12 +1,14 @@
 import { Team } from "../Modal/Team.js";
+
 const createTeam = async (req, res, next) => {
   const body = req.body;
+  // console.log({ body }, ">>>>>>>>>>>>>>>>>>>>>>>.");
   try {
     const newTeam = new Team({
       ...body,
     });
     const savedTeam = await newTeam.save();
-    res.status(201).json(savedTeam);
+    res.status(201).json({ message: "Team has been created", Team: savedTeam });
   } catch (error) {
     if (error instanceof Error && error.code === 11000) {
       res.status(400).json({ error: "Team with this name already exists" });
@@ -65,7 +67,9 @@ const deleteTeam = async (req, res, next) => {
       return res.status(404).json({ error: "Team not found" });
     }
     res.status(200).json({ message: "Team  deleted", team: deletedTeam });
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 export { createTeam, getAllTeams, getSingleTeam, updateTeam, deleteTeam };
