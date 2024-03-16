@@ -18,6 +18,7 @@ const connect = () => {
     .catch((error) => {
       throw error;
     });
+    
 };
 
 app.use(express.json());

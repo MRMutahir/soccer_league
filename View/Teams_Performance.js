@@ -6,10 +6,11 @@ import {
   createTeamPerformance,
   updateTeamPerformance,
   deleteTeamPerformance,
-  getTeamPerformance
+  getTeamPerformance,
 } from "../Controller/Teams_Performance.js";
 
-Teams_Performance.post("/TeamPerformance/:teamId", getTeamPerformance);
+Teams_Performance.get("/TeamPerformance/:teamId", getTeamPerformance);
+
 Teams_Performance.post("/TeamPerformance/:teamId", createTeamPerformance);
 
 Teams_Performance.put("/TeamPerformance/:teamId", updateTeamPerformance);

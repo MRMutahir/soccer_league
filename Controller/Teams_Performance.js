@@ -43,30 +43,44 @@ const updateTeamPerformance = async (req, res, next) => {
   }
 };
 const deleteTeamPerformance = async (req, res, next) => {
-  const teamId = req.params.teamId;
-  const performanceId = req.params.performanceId;
-
   try {
+    const teamId = req.params.teamId;
+
     const updatedTeam = await Team.findByIdAndUpdate(
       teamId,
-      { $pull: { teamPerformance: { _id: performanceId } } },
+      { $set: { teamPerformance: [] } },
       { new: true }
     );
 
     if (!updatedTeam) {
       return res.status(404).json({ error: "Team not found" });
     }
-
-    res
-      .status(200)
-      .json({ message: "Team performance deleted", team: updatedTeam });
+    res.json(updatedTeam);
   } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error("Error deleting team performance:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
+
 const getTeamPerformance = async (req, res, next) => {
-  const teamPerformance = await Team.findOne();
-  res.send(teamPerformance)
+  try {
+    const teamId = req.params.teamId;
+
+    // Find the team by ID
+    const team = await Team.findById(teamId);
+
+    if (!team) {
+      return res.status(404).json({ error: "Team not found" });
+    }
+
+    res.json({
+      message: "Team performance data retrieved successfully",
+      performanceData: team.teamPerformance,
+    });
+  } catch (error) {
+    console.error("Error fetching team performance:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 export {
