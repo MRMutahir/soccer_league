@@ -8,19 +8,21 @@ import Upcoming_Matches from "./View/Upcoming_Matches.js";
 import Detailed_Scorecard from "./View/Detailed_Scorecard.js";
 
 let app = express();
-let port = 3000;
+let port = process.env.PORT || 3000;
 
 dotenv.config();
 const connect = () => {
   mongoose
-    .connect(process.env.MONGO_URL)
+    .connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
     .then(() => {
-      console.log("connect to DB");
+      console.log("Connected to MongoDB");
     })
     .catch((error) => {
-      throw error;
+      console.error("Error connecting to MongoDB:", error.message);
     });
-    
 };
 
 app.use(express.json());
