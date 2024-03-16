@@ -5,10 +5,12 @@ import route from "./View/Team.js";
 import route_Players_Performance from "./View/Players_Performance.js";
 import Teams_Performance from "./View/Teams_Performance.js";
 import Upcoming_Matches from "./View/Upcoming_Matches.js";
+import cors from "cors";
 import Detailed_Scorecard from "./View/Detailed_Scorecard.js";
 
 let app = express();
 let PORT = process.env.PORT || 3000;
+app.use(cors());
 
 dotenv.config();
 const connect = () => {
