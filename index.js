@@ -8,12 +8,12 @@ import Upcoming_Matches from "./View/Upcoming_Matches.js";
 import Detailed_Scorecard from "./View/Detailed_Scorecard.js";
 
 let app = express();
-let port = process.env.PORT || 3000;
+let PORT = process.env.PORT || 3000;
 
 dotenv.config();
 const connect = () => {
   mongoose
-    .connect(process.env.MONGO_URL, {
+    .connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -32,7 +32,7 @@ app.use("/api", Teams_Performance);
 app.use("/api", Upcoming_Matches);
 app.use("/api", Detailed_Scorecard);
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   connect();
-  console.log(" Server  Start", port);
+  console.log(" Server  Start", PORT);
 });
