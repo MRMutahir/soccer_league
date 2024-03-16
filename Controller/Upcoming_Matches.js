@@ -25,7 +25,7 @@ const create_Upcoming_Matches = async (req, res, next) => {
     }
 
     const MatcheFix = {
-      opponent: `${team.name} VS ${body.team}`,
+      opponent: `${team.name} VS ${body.opponent}`,
       date: matchDate,
       time: body.time,
       location: body.location,

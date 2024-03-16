@@ -24,6 +24,7 @@ const teamPerformanceSchema = new mongoose.Schema({
 
 // Define the Detailed Scorecard schema
 const detailedScorecardSchema = new mongoose.Schema({
+  opponent: String,
   goalKeeperSave: Number,
   highestScorer: String,
   mostAssists: String,
@@ -54,6 +55,7 @@ const teamSchema = new mongoose.Schema({
   playersInformation: [playerPerformanceSchema],
   teamPerformance: [teamPerformanceSchema],
   upcomingMatches: [upcomingMatchSchema],
+  detailedScorecard: [detailedScorecardSchema],
 });
 
 // Create the Team model
