@@ -33,8 +33,14 @@ const detailedScorecardSchema = new mongoose.Schema({
 // Define the Upcoming Match schema
 const upcomingMatchSchema = new mongoose.Schema({
   opponent: String,
-  date: Date,
-  time: String,
+  date: {
+    type: Date,
+    unique: true,
+  },
+  time: {
+    unique: true,
+    type: String,
+  },
   location: String,
 });
 

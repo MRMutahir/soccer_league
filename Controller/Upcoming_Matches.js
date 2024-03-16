@@ -4,14 +4,19 @@ const get_Upcoming_Matches = async (req, res, next) => {
   try {
     const teamId = req.params.teamId;
     const team = await Team.findById(teamId);
+    const upComingMatchesPreData = team.upcomingMatches;
+    const { date, time } = upComingMatchesPreData;
+    // console.log(
+    //   upComingMatchesPreData,
+    //   ">>>>>>>>>>>>>>>>>upComingMatchesPreData"
+    // );
     const body = req.body;
     const MatcheFix = {
       opponent: `${team.name} VS ${body.team}`,
       date: new Date(body.date),
-      time: new Date(body.time),
+      time: body.time,
       location: body.location,
     };
-
     const updatedTeam = await Team.findByIdAndUpdate(
       teamId,
       { $push: { upcomingMatches: MatcheFix } },
