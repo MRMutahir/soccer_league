@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-// Define the Player's Performance schema
+
 const playerPerformanceSchema = new mongoose.Schema({
   name: String,
   appearances: Number,
@@ -11,7 +11,6 @@ const playerPerformanceSchema = new mongoose.Schema({
   image: String,
 });
 
-// Define the Team's Performance schema
 const teamPerformanceSchema = new mongoose.Schema({
   totalGoals: Number,
   shotsPG: Number,
@@ -22,7 +21,6 @@ const teamPerformanceSchema = new mongoose.Schema({
   rating: Number,
 });
 
-// Define the Detailed Scorecard schema
 const detailedScorecardSchema = new mongoose.Schema({
   opponent: String,
   goalKeeperSave: Number,
@@ -31,7 +29,6 @@ const detailedScorecardSchema = new mongoose.Schema({
   bestDefense: String,
 });
 
-// Define the Upcoming Match schema
 const upcomingMatchSchema = new mongoose.Schema({
   opponent: String,
   date: {
@@ -45,7 +42,6 @@ const upcomingMatchSchema = new mongoose.Schema({
   location: String,
 });
 
-// Define the Team schema
 const teamSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -58,6 +54,5 @@ const teamSchema = new mongoose.Schema({
   detailedScorecard: [detailedScorecardSchema],
 });
 
-// Create the Team model
 const Team = mongoose.model("Team", teamSchema);
 export { Team };
