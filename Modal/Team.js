@@ -36,7 +36,6 @@ const upcomingMatchSchema = new mongoose.Schema({
   date: Date,
   time: String,
   location: String,
-  detailedScorecard: detailedScorecardSchema, // Using the Detailed Scorecard schema here
 });
 
 // Define the Team schema
