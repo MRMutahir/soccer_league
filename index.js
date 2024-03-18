@@ -30,6 +30,13 @@ app.use("/api", route_Players_Performance);
 app.use("/api", Teams_Performance);
 app.use("/api", Upcoming_Matches);
 app.use("/api", Detailed_Scorecard);
+app.get("/", async (req, res) => {
+  const welcomeMessage = {
+    message: "Welcome to my project!",
+  };
+
+  res.json(welcomeMessage);
+});
 
 app.listen(PORT, () => {
   connect();
